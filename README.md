@@ -21,17 +21,20 @@ Before running this project, make sure you have:
 ## Installation
 
 1. Clone this repository:
+
 ```bash
-git clone https://github.com/your-username/first-openai-api-call.git
+git clone https://github.com/devendra684/first-openai-api-call.git
 cd first-openai-api-call
 ```
 
 2. Install the required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 3. Create a `.env` file in the project root directory and add your OpenAI API key:
+
 ```
 OPENAI_API_KEY=your-api-key-here
 ```
@@ -39,11 +42,13 @@ OPENAI_API_KEY=your-api-key-here
 ## Usage
 
 Run the script using Python:
+
 ```bash
 python first_call.py
 ```
 
 The application will:
+
 1. Prompt you to enter your question or message
 2. Send your input to OpenAI's API
 3. Display the AI's response
@@ -84,4 +89,4 @@ This project is open source and available under the MIT License.
 ## Acknowledgments
 
 - OpenAI for providing the API
-- Python-dotenv for environment variable management 
+- Python-dotenv for environment variable management

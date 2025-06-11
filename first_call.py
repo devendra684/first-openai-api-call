@@ -10,7 +10,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 if not api_key:
     raise ValueError("No OpenAI API key found. Please check your .env file.")
 
-openai.api_key = api_key
+client = openai.OpenAI(api_key=api_key)
 
 # Define the system prompt
 SYSTEM_PROMPT = """You are a helpful AI assistant that provides clear and concise responses 
@@ -22,17 +22,19 @@ def get_completion(user_prompt):
     """
     try:
         # Make the API call
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt}
-            ]
+            ],
+            temperature=0.7,
+            max_tokens=50
         )
         
         # Extract the response and token usage
-        assistant_response = response['choices'][0]['message']['content']
-        total_tokens = response['usage']['total_tokens']
+        assistant_response = response.choices[0].message.content
+        total_tokens = response.usage.total_tokens
         
         return assistant_response, total_tokens
     
